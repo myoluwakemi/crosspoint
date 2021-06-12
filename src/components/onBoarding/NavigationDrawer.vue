@@ -9,7 +9,7 @@
       height="auto"
 
       width="100vw"
-      top="-50%"
+
       :style="[
       !$vuetify.breakpoint.mobile ? { display: 'none' } : { display: 'block' }]"
 
@@ -19,11 +19,12 @@
       <v-app-bar-nav-icon style="color: white" @click="$emit('close:drawer')"></v-app-bar-nav-icon>
 
     </div>
-    <hr style="color: rgba(255, 255, 255, 0.1)"/>
+
 
     <v-list
         nav
         dense
+        style="border: 1px solid  rgba(255, 255, 255, 0.1"
     >
 
         <v-list-item>

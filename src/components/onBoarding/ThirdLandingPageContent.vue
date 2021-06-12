@@ -35,11 +35,9 @@ name: "ThirdLandingPageContent"
     img {
       width: 100%;
     }
-    //@media (max-width: 789px) {
-    //  display: flex;
-    //  flex-direction: column;
-    //  order: 1;
-    //}
+    @media (max-width: 789px) {
+     margin-left: 0;
+    }
   }
   h1 {
     font-size: 36px;
@@ -76,5 +74,6 @@ name: "ThirdLandingPageContent"
   }
 
 }
+
 
 </style>
