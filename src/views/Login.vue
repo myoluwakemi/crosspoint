@@ -1,5 +1,5 @@
 <template>
-<v-card elevation="0">
+<v-card elevation="0" >
   <v-card-title>
     <h3>Welcome</h3>
   </v-card-title>
@@ -27,6 +27,7 @@
    <div class="redirect">
           <span style="font-size: 14px"
           >Don't have an Account?<v-btn
+              @click="openRegister"
               text
               color="#7D17AD"
               style="font-weight: bold; text-transform: capitalize"
@@ -35,14 +36,19 @@
           >
    </div>
  </v-card-text>
+  <ModalRoot/>
 </v-card>
 </template>
 
 <script>
 import AuthButton from "@/Commons/AuthButton";
+import ModalRoot from "@/components/ModalRoot";
+import {ModalBus} from "@/eventBus";
+import BeforeRegister from "@/views/BeforeRegister";
+
 export default {
 name: "Login.vue",
-  components: {AuthButton},
+  components: {ModalRoot, AuthButton},
   data:()=>{
   return{
     user:{
@@ -51,6 +57,14 @@ name: "Login.vue",
     },
     isSubmitting: false
   }
+  },
+  methods: {
+    openRegister() {
+      ModalBus.$emit('open', {
+        component: BeforeRegister,  modalWidth: "70rem"
+      })
+    }
+
   }
 }
 </script>

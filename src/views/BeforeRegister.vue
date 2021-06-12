@@ -8,10 +8,11 @@
         <v-col v-for="(regType, i) in registration" :key="i">
           <v-item :value="regType.value" v-slot="{ active, toggle }">
             <v-card
-                max-height="250px"
+                max-height="150px"
+                max-width="350px"
                 :color="active ? '#7D17AD' : ''"
                 elevation="0"
-                max-width="250px"
+                :style="{color:active? 'white': 'black'}"
                 style="padding: 1rem; border-radius: 8px; border: 0.5px solid #D3D3D3; "
                 @click="toggle"
             >
@@ -31,34 +32,65 @@
       </v-row>
 
     </v-item-group>
+    <ModalRoot/>
   </v-card>
 
 </template>
 
 <script>
 import Iconhelper  from "@/Commons/IconHelper"
+import {ModalBus} from "@/eventBus";
+import IndividualAuth from "@/views/IndividualAuth";
+import ModalRoot from "@/components/ModalRoot";
+import CompanyAuth from "@/views/CompanyAuth";
+
 export default {
 name: "BeforeRegister",
-  components: { Iconhelper },
+  components: { Iconhelper , ModalRoot},
+
   data: ()=> {
   return{
     registration: [
       {
         icon: "individual",
-        type: "individual",
+        type: "Individual",
         label: "Register as an individual",
-        value: false
+        value: true
       },
       {
         icon: "organisation",
-        type: "organisation",
+        type: "Organisation",
         label: "Register as an Organisation",
-        value: true
+        value: false
       }
     ],
     isIndividual: null
   }
+  },
+  watch: {
+    isIndividual(value){
+      if(value === true){
+        this.openIndividualAuth()
+      }if (value === false){
+        this.openCompanyAuth()
+      }
+    }
+
+  },
+  methods: {
+  openIndividualAuth(){
+    ModalBus.$emit('open', {
+      component: IndividualAuth
+    })
+
+  },
+    openCompanyAuth(){
+    ModalBus.$emit('open', {
+      component: CompanyAuth
+    })
+    }
   }
+
 }
 </script>
 

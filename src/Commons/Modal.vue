@@ -6,7 +6,7 @@
        @click="$emit('onClose')">
 
   <transition name="scale-in">
-    <div v-show="isOpen" class="modal-dialog" :class="{open: isOpen}" @click.stop>
+    <div v-show="isOpen" :style="{width: modalWidth}" class="modal-dialog" :class="{open: isOpen}" @click.stop>
       <button class="modal-close" @click="$emit('onClose', true)">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
           <path
@@ -29,8 +29,12 @@ export default {
   name: "Modal",
   props: {
     isOpen: Boolean,
-    title: String
-    },
+    title: String,
+    modalWidth:{
+      default: "30rem"
+    }
+
+  },
   data: ()=> {
     return{
       expand: false,
@@ -63,7 +67,7 @@ export default {
   z-index: 7;
 }
 .modal-dialog {
-  width: 30rem;
+
   background: rgb(255, 255, 255);
   padding: 1.5rem 2rem;
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);

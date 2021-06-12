@@ -93,12 +93,13 @@ export default {
     openLogin() {
       ModalBus.$emit('open', {
         component: Login
+
       })
 
     },
     openRegister() {
       ModalBus.$emit('open', {
-        component: BeforeRegister
+        component: BeforeRegister,  modalWidth: "70rem"
       })
     }
   }

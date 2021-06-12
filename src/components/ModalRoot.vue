@@ -1,5 +1,5 @@
 <template>
-  <Modal :isOpen="!!component" :title="title" @onClose="handleModalClose">
+  <Modal :isOpen="!!component" :title="title" @onClose="handleModalClose" :modal-width="modalWidth">
     <component :is="component" @onClose="handleClose" v-bind="props" />
   </Modal>
 </template>
@@ -16,15 +16,19 @@ name: "ModalRoot.vue",
       component: null,
       title: '',
       props: null,
-      closeOnClick: true
+      closeOnClick: true,
+      modalWidth: "30rem"
+
     }
   },
   created() {
-  ModalBus.$on('open', ({ component, title = '', props = null, closeOnClick = true})=>{
+  ModalBus.$on('open', ({ component, title= '', modalWidth = "30rem", props = null, closeOnClick = true})=>{
     this.component = component
     this.title = title
     this.props = props
     this.closeOnClick = closeOnClick
+    this.modalWidth = modalWidth
+
   })
     document.addEventListener('keyup', this.handleKeyup)
   },
