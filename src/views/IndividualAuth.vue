@@ -4,17 +4,25 @@
     <h3>Individual</h3>
   </v-card-title>
   <v-card-text>
-    <p>Log in to continue</p>
+    <p>Create a cross point individual account</p>
     <v-form>
       <div>
-        <h4>Email address</h4>
-        <v-text-field outlined background-color="#FAFAFA" v-model="user.email" placeholder="Email"/>
+        <h4>First Name</h4>
+        <v-text-field outlined background-color="#FAFAFA" v-model="user.first_name" placeholder="First name"/>
+      </div>
+      <div>
+        <h4>Last Name</h4>
+        <v-text-field outlined background-color="#FAFAFA" v-model="user.last_name" placeholder="Last name"/>
+      </div>
+      <div>
+        <h4>Email/ Phone Number</h4>
+        <v-text-field outlined background-color="#FAFAFA" v-model="user.contact" placeholder="Email/ PHone Number"/>
       </div>
       <div>
         <h4>Password</h4>
-        <v-text-field outlined background-color="#FAFAFA" v-model="user.password" placeholder="Email"/>
+        <v-text-field outlined background-color="#FAFAFA" v-model="user.password" placeholder="Password"/>
       </div>
-      <AuthButton :loading="isSubmitting" label="Login"/>
+      <AuthButton :loading="isSubmitting" label="Register"/>
       <div class="or-div">
                     <span>
                         <h4>
@@ -26,31 +34,46 @@
     </v-form>
     <div class="redirect">
           <span style="font-size: 14px"
-          >Don't have an Account?<v-btn
+          >you have an Account?<v-btn
+              @click="openLogin"
               text
               color="#7D17AD"
               style="font-weight: bold; text-transform: capitalize"
-          >Register</v-btn
+          >Login</v-btn
           ></span
           >
     </div>
   </v-card-text>
+  <ModalRoot/>
 </v-card>
 </template>
 
 <script>
 import AuthButton from "@/Commons/AuthButton";
+import {ModalBus} from "@/eventBus";
+import ModalRoot from "@/components/ModalRoot";
+import Login from "@/views/Login";
+
 export default {
 name: "IndividualAuth",
-  components: {AuthButton},
+  components: {AuthButton, ModalRoot},
   data:()=>{
     return{
       user:{
-        email:"",
+        first_name:"",
+        last_name: "",
+        contact: "",
         password: ""
       },
       isSubmitting: false
     }
+  },
+  methods: {
+  openLogin(){
+    ModalBus.$emit('open',{
+      component: Login
+    })
+  }
   }
 }
 </script>
