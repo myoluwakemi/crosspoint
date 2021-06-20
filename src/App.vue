@@ -34,4 +34,11 @@ export default {
   border-color: transparent !important;
 
 }
+
+.dashboard__nav {
+  .v-tabs-slider-wrapper {
+    width: 100% !important;
+    z-index: 0;
+  }
+}
 </style>
