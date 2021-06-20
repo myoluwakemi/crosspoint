@@ -24,12 +24,15 @@
     <v-list
         nav
         dense
-        style="border: 1px solid  rgba(255, 255, 255, 0.1"
+        style="border: 1px solid  rgba(255, 255, 255, 0.1)"
     >
 
         <v-list-item>
           <v-list-item-title style="font-size: 16px; color: #ffffff; font-weight:bolder; margin-bottom: 2rem; margin-top: 1.2rem " >Home</v-list-item-title>
         </v-list-item>
+      <v-list-item>
+        <v-list-item-title @click="toDashboard" style="font-size: 16px; color: #ffffff; font-weight:bolder; margin-bottom: 2rem; margin-top: 1.2rem " >Dashboard</v-list-item-title>
+      </v-list-item>
 
       <v-list-group color="#fff" >
         <template v-slot:activator>
@@ -94,6 +97,14 @@ export default {
   data: ()=>{
     return{
       group: null,
+    }
+  },
+  methods: {
+    toHOme(){
+      this.$router.push('/')
+    },
+    toDashboard(){
+      this.$router.push('/dashboard')
     }
   },
   props :{

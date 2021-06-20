@@ -19,6 +19,7 @@
         <li>Personal</li>
         <li>Organisation</li>
         <li>About Us</li>
+        <li style="cursor: pointer" @click="toDashboard">Dashboard</li>
       </ul>
       <v-spacer></v-spacer>
       <span  :style="[
@@ -101,6 +102,9 @@ export default {
       ModalBus.$emit('open', {
         component: BeforeRegister,  modalWidth: "70rem"
       })
+    },
+    toDashboard(){
+      this.$router.push('/dashboard')
     }
   }
 }
