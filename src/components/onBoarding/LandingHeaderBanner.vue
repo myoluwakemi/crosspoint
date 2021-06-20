@@ -27,6 +27,7 @@
           <p style="margin-bottom: 2rem">Crosspoint helps simplify insurance delivery for the everyday user. Comparing plans or customising your
             own plan take a few simple steps.</p>
           <v-btn
+              @click="openGetStarted"
               depressed
               large
               color="#fff"
@@ -43,15 +44,28 @@
         </div>
       </div>
     </v-card>
+    <ModalRoot/>
   </div>
 
 </template>
 
 <script>
 import LandingHeader from "@/components/onBoarding/LandingHeader";
+import {ModalBus} from "@/eventBus";
+import ModalRoot from "@/components/ModalRoot";
+import BeforeRegister from "@/views/BeforeRegister";
+
+
 export default {
 name: "LandingHeaderBanner",
-  components: {LandingHeader}
+  components: {ModalRoot, LandingHeader},
+  methods: {
+  openGetStarted(){
+    ModalBus.$emit("open",{
+      component: BeforeRegister,  modalWidth: "70rem"
+    })
+  }
+  }
 }
 </script>
 
