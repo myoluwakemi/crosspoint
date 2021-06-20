@@ -57,7 +57,8 @@ export default {
       },
       {
         name: 'Claims',
-        icon: 'claim'
+        icon: 'claim',
+        to: {name: 'Claims'}
       },
       {
         name: 'Profile',

@@ -18,6 +18,11 @@ export default {
 };
 </script>
 <style lang="scss">
+
+* {
+  font-family: "Roboto", sans-serif;
+}
+
 .app-purple_color{
   color: #7D17AD;
 }
@@ -39,6 +44,19 @@ export default {
   .v-tabs-slider-wrapper {
     width: 100% !important;
     z-index: 0;
+  }
+}
+
+.insurance__type__tabs_wrapper {
+  .v-tabs-slider-wrapper {
+    height: 100% !important;
+    z-index: 0;
+  }
+}
+
+.claim__table {
+  .v-data-table > .v-data-table__wrapper > table > thead > tr > th {
+    background: #E0E0E0 !important;
   }
 }
 </style>
