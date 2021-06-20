@@ -1,5 +1,6 @@
 <template>
   <v-app>
+    <LogoLoader/>
     <v-main>
       <router-view/>
     </v-main>
@@ -8,9 +9,10 @@
 
 <script>
 
+import LogoLoader from "@/Commons/LogoLoader";
 export default {
   name: 'App',
-
+  components: {LogoLoader},
   data: () => ({
     //
   }),
