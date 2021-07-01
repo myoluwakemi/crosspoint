@@ -24,7 +24,7 @@
       <div>
         <v-img :src="brand_logo"/>
       </div>
-      <v-app-bar-nav-icon @click="SET_DRAWER" color="white"></v-app-bar-nav-icon>
+      <v-app-bar-nav-icon @click="$root.$emit('toggle-drawer')" color="white"></v-app-bar-nav-icon>
     </div>
   </div>
 </template>
