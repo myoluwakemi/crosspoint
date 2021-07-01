@@ -61,6 +61,7 @@
         <v-col cols="12" md="4">
           <insurance-type-tabs :tabs="insurance_tabs"/>
         </v-col>
+        swears
       </v-row>
     </v-card>
   </div>
